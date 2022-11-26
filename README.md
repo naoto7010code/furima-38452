@@ -4,9 +4,9 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false, unipue: true |
+| nickname           | string | null: false               |
 | email              | string | null: false, unipue: true |
-| encrypted_password | string | null: false, unipue: true |
+| encrypted_password | string | null: false               |
 | family_name        | string | null: false               |
 | first_name         | string | null: false               |
 | family_name_kana   | string | null: false               |
@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| user_id         | references | null: false, foreign_key: true |
-| item_name       | string     | null: false                    |
-| description     | text       | null: false                    |
-| category        | integer    | null: false                    |
-| condition       | integer    | null: false                    |
-| delivery_charge | integer    | null: false                    |
-| area            | integer    | null: false                    |
-| delivery_days   | integer    | null: false                    |
-| price           | integer    | null: false                    |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user               | references | null: false, foreign_key: true |
+| item_name          | string     | null: false                    |
+| description        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| area_id            | integer    | null: false                    |
+| delivery_day_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
 
 ### Association
 
@@ -39,10 +39,10 @@
 
 ## purchases テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -54,9 +54,9 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| purchases_id | references | null: false, foreign_key: true |
+| purchase     | references | null: false, foreign_key: true |
 | post_code    | string     | null: false                    |
-| prefecture   | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
