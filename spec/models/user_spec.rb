@@ -80,15 +80,25 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
-      it 'お名前は全角（漢字・ひらがな・カタカナ）での入力が必須でないと登録できない' do
+      it 'family_nameは全角（漢字・ひらがな・カタカナ）での入力が必須でないと登録できない' do
         @user.family_name = "aaa"
-        @user.first_name = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name 全角文字を使用してください")
       end
 
-      it 'お名前カナ(全角)は全角（カタカナ）での入力が必須でないと登録できない' do
+      it 'first_nameは全角（漢字・ひらがな・カタカナ）での入力が必須でないと登録できない' do
+        @user.first_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+      end
+
+      it 'family_name_kanaは全角（カタカナ）での入力が必須でないと登録できない' do
         @user.family_name_kana = "かな"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name kana 全角カナ文字を使用してください")
+      end
+
+      it 'first_name_kanaは全角（カタカナ）での入力が必須でないと登録できない' do
         @user.first_name_kana = "かな"
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana 全角カナ文字を使用してください")
