@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:item_id] || params[:id])
+    @item = Item.find(params[:id])
   end
 
   private
